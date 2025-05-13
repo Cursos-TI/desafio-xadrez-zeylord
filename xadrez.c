@@ -1,44 +1,64 @@
 #include <stdio.h>
+#include <string.h>
 
 int main() {
-    int Torre, Bispo, Rainha;
+    int casas;
+    char direcao[20];
 
-    // Solicita ao usuário o número de casas para a torre
-    printf("Digite o número de casas que a Torre deve se mover para a Direita: ");
-    scanf("%d", &Torre);
+    // ----- Torre -----
+    printf("Torre:\n");
+    printf("Digite a direção (Direita, Esquerda, Cima, Baixo): ");
+    scanf(" %[^\n]", direcao); // lê string com espaços
+    printf("Digite o número de casas que a Torre deve se mover: ");
+    scanf("%d", &casas);
 
-    // Simulação do movimento da Torre usando for
-    printf("Movimento da Torre:\n");
-    for (int i = 1; i <= Torre; i++) {
-        printf("Direita\n");
+    // Validação e movimento da Torre (com for)
+    if (strcmp(direcao, "Direita") == 0 || strcmp(direcao, "Esquerda") == 0 ||
+        strcmp(direcao, "Cima") == 0 || strcmp(direcao, "Baixo") == 0) {
+        printf("Movimento da Torre:\n");
+        for (int i = 1; i <= casas; i++) {
+            printf("%s\n", direcao);
+        }
+    } else {
+        printf("Direção inválida para a Torre.\n");
     }
-    printf("\n");
 
-    // Solicita ao usuário o número de casas para o bispo
-    printf("Digite o número de casas que o Bispo deve se mover na Diagonal Cima Direita: ");
-    scanf("%d", &Bispo);
+    // ----- Bispo -----
+    printf("\nBispo:\n");
+    printf("Digite a direção (Cima Direita, Cima Esquerda, Baixo Direita, Baixo Esquerda): ");
+    scanf(" %[^\n]", direcao);
+    printf("Digite o número de casas que o Bispo deve se mover: ");
+    scanf("%d", &casas);
 
-    // Simulação do movimento do Bispo usando while
-    int j = 1;
-    printf("Movimento do Bispo:\n");
-    while (j <= Bispo) {
-        printf("Cima Direita\n");
-        j++;
+    // Validação e movimento do Bispo (com while)
+    if (
+        strcmp(direcao, "Cima Direita") == 0 || strcmp(direcao, "Cima Esquerda") == 0 ||
+        strcmp(direcao, "Baixo Direita") == 0 || strcmp(direcao, "Baixo Esquerda") == 0
+    ) {
+        printf("Movimento do Bispo:\n");
+        int i = 1;
+        while (i <= casas) {
+            printf("%s\n", direcao);
+            i++;
+        }
+    } else {
+        printf("Direção inválida para o Bispo.\n");
     }
-    printf("\n");
 
-    // Solicita ao usuário o número de casas para a rainha
-    printf("Digite o número de casas que a Rainha deve se mover para a Esquerda: ");
-    scanf("%d", &Rainha);
+    // ----- Rainha -----
+    printf("\nRainha:\n");
+    printf("Digite a direção (Direita, Esquerda, Cima, Baixo, Cima Direita, Cima Esquerda, Baixo Direita, Baixo Esquerda): ");
+    scanf(" %[^\n]", direcao);
+    printf("Digite o número de casas que a Rainha deve se mover: ");
+    scanf("%d", &casas);
 
-    // Simulação do movimento da rainha usando do-while
-    int k = 1;
+    // Movimento da Rainha (com do-while)
     printf("Movimento da Rainha:\n");
+    int i = 1;
     do {
-        printf("Esquerda\n");
-        k++;
-    } while (k <= Rainha);
+        printf("%s\n", direcao);
+        i++;
+    } while (i <= casas);
 
     return 0;
-
 }
