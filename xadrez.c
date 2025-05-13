@@ -1,29 +1,44 @@
 #include <stdio.h>
 
 int main() {
-    // Simulação do movimento da Torre: 5 casas para a direita usando o loop FOR
-    printf("Movimento da Torre (5 casas para a Direita):\n");
-    for (int i = 1; i <= 5; i++) {
+    int Torre, Bispo, Rainha;
+
+    // Solicita ao usuário o número de casas para a torre
+    printf("Digite o número de casas que a Torre deve se mover para a Direita: ");
+    scanf("%d", &Torre);
+
+    // Simulação do movimento da Torre usando for
+    printf("Movimento da Torre:\n");
+    for (int i = 1; i <= Torre; i++) {
         printf("Direita\n");
     }
     printf("\n");
 
-    // Simulação do movimento do Bispo: 5 casas na diagonal (Cima e Direita) usando o loop WHILE
-    printf("Movimento do Bispo (5 casas na Diagonal Cima Direita):\n");
-    int i1 = 1;
-    while (i1 <= 5) {
+    // Solicita ao usuário o número de casas para o bispo
+    printf("Digite o número de casas que o Bispo deve se mover na Diagonal Cima Direita: ");
+    scanf("%d", &Bispo);
+
+    // Simulação do movimento do Bispo usando while
+    int j = 1;
+    printf("Movimento do Bispo:\n");
+    while (j <= Bispo) {
         printf("Cima Direita\n");
-        i1++;
+        j++;
     }
     printf("\n");
 
-    // Simulação do movimento da Rainha: 8 casas para a esquerda usando o loop DO-WHILE
-    printf("Movimento da Rainha (8 casas para a Esquerda):\n");
-    int i2 = 1;
+    // Solicita ao usuário o número de casas para a rainha
+    printf("Digite o número de casas que a Rainha deve se mover para a Esquerda: ");
+    scanf("%d", &Rainha);
+
+    // Simulação do movimento da rainha usando do-while
+    int k = 1;
+    printf("Movimento da Rainha:\n");
     do {
         printf("Esquerda\n");
-        i2++;
-    } while (i2 <= 8);
+        k++;
+    } while (k <= Rainha);
 
     return 0;
+
 }
