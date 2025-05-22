@@ -1,64 +1,76 @@
 #include <stdio.h>
 #include <string.h>
 
+//Função Recursiva para a Torre 
+void moverTorre(int casas, char direcao[], int passo) {
+    if (passo > casas) return;
+    printf("%s\n", direcao);
+    moverTorre(casas, direcao, passo + 1);
+}
+
+//Função Recursiva para a Rainha
+void moverRainha(int casas, char direcao[], int passo) {
+    if (passo > casas) return;
+    printf("%s\n", direcao);
+    moverRainha(casas, direcao, passo + 1);
+}
+
+//Função Recursiva e Loops Aninhados para o Bispo
+void moverBispoRecursivo(int casas, char direcao[], int passo) {
+    if (passo > casas) return;
+    printf("%s\n", direcao);
+    moverBispoRecursivo(casas, direcao, passo + 1);
+}
+
+void moverBispoLoopsAninhados(int casas) {
+    printf("Movimento do Bispo (com loops aninhados):\n");
+    for (int v = 1; v <= casas; v++) {          // Movimento vertical
+        for (int h = 1; h <= 1; h++) {          // Movimento horizontal (1 passo por vertical)
+            printf("Cima Direita\n");
+        }
+    }
+}
+
+//Função para o Cavalo com Loops Aninhados
+void moverCavalo(int movimentos) {
+    printf("Movimento do Cavalo (em 'L'):\n");
+    for (int i = 1; i <= movimentos; i++) {
+        for (int j = 1; j <= 1; j++) { // apenas uma direção: 2 cima + 1 direita
+            if (i % 2 == 0) continue;  // apenas movimentos ímpares simulando um padrão
+            printf("Cima\n");
+            printf("Cima\n");
+            printf("Direita\n\n");
+        }
+    }
+}
+
 int main() {
-    int casas;
-    char direcao[20];
-
-    // ----- Torre -----
+    //Torre
+    int casasTorre = 3;
+    char dirTorre[] = "Direita";
     printf("Torre:\n");
-    printf("Digite a direção (Direita, Esquerda, Cima, Baixo): ");
-    scanf(" %[^\n]", direcao); // lê string com espaços
-    printf("Digite o número de casas que a Torre deve se mover: ");
-    scanf("%d", &casas);
+    moverTorre(casasTorre, dirTorre, 1);
+    printf("\n");
 
-    // Validação e movimento da Torre (com for)
-    if (strcmp(direcao, "Direita") == 0 || strcmp(direcao, "Esquerda") == 0 ||
-        strcmp(direcao, "Cima") == 0 || strcmp(direcao, "Baixo") == 0) {
-        printf("Movimento da Torre:\n");
-        for (int i = 1; i <= casas; i++) {
-            printf("%s\n", direcao);
-        }
-    } else {
-        printf("Direção inválida para a Torre.\n");
-    }
+    //Bispo
+    int casasBispo = 3;
+    char dirBispo[] = "Cima Direita";
+    printf("Bispo (com recursividade):\n");
+    moverBispoRecursivo(casasBispo, dirBispo, 1);
+    printf("\n");
+    moverBispoLoopsAninhados(casasBispo);
+    printf("\n");
 
-    // ----- Bispo -----
-    printf("\nBispo:\n");
-    printf("Digite a direção (Cima Direita, Cima Esquerda, Baixo Direita, Baixo Esquerda): ");
-    scanf(" %[^\n]", direcao);
-    printf("Digite o número de casas que o Bispo deve se mover: ");
-    scanf("%d", &casas);
+    //Rainha
+    int casasRainha = 4;
+    char dirRainha[] = "Esquerda";
+    printf("Rainha:\n");
+    moverRainha(casasRainha, dirRainha, 1);
+    printf("\n");
 
-    // Validação e movimento do Bispo (com while)
-    if (
-        strcmp(direcao, "Cima Direita") == 0 || strcmp(direcao, "Cima Esquerda") == 0 ||
-        strcmp(direcao, "Baixo Direita") == 0 || strcmp(direcao, "Baixo Esquerda") == 0
-    ) {
-        printf("Movimento do Bispo:\n");
-        int i = 1;
-        while (i <= casas) {
-            printf("%s\n", direcao);
-            i++;
-        }
-    } else {
-        printf("Direção inválida para o Bispo.\n");
-    }
-
-    // ----- Rainha -----
-    printf("\nRainha:\n");
-    printf("Digite a direção (Direita, Esquerda, Cima, Baixo, Cima Direita, Cima Esquerda, Baixo Direita, Baixo Esquerda): ");
-    scanf(" %[^\n]", direcao);
-    printf("Digite o número de casas que a Rainha deve se mover: ");
-    scanf("%d", &casas);
-
-    // Movimento da Rainha (com do-while)
-    printf("Movimento da Rainha:\n");
-    int i = 1;
-    do {
-        printf("%s\n", direcao);
-        i++;
-    } while (i <= casas);
+    //Cavalo
+    int movimentosCavalo = 2;
+    moverCavalo(movimentosCavalo);
 
     return 0;
 }
